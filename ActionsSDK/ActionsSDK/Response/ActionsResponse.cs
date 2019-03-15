@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -15,6 +16,14 @@ namespace ActionsSDK
         public CustomPushMessage customPushMessage { get; set; }
         public bool isInSandbox { get; set; }
 
+        [JsonIgnore]
+        private ActionsRequest ActionsRequest { get; set; }
+
+        public ActionsResponse(ActionsRequest ActionsRequest)
+        {
+            this.ActionsRequest = ActionsRequest;
+        }
+
         public void AddHelper(RichResponse richResponse, ExpectedIntent expectedIntent)
         {
             if (expectedInputs == null)
@@ -25,7 +34,15 @@ namespace ActionsSDK
 
 
             expectedInputs.Add(new ExpectedInput(new InputPrompt(richResponse), expectedIntent));
-            
         }
+
+        //public void AddSimpleResponse()
+        //{
+        //    if(ActionsRequest.surface.HasAudio() || ActionsRequest.surface.HasScreen())
+        //    {
+        //        throw new 
+        //    }
+        //}
+
     }
 }
