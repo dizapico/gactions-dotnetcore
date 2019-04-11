@@ -31,6 +31,16 @@ namespace ActionsSDK
             ExpectedInput = new ExpectedInput();
         }
 
+        public bool IsRequestWelcome()
+        {
+            return ActionsRequest.IsWelcome();
+        }
+
+        public bool IsSignIn()
+        {
+            return ActionsRequest.IsSignIn();
+        }
+
         public void AddHelper(RichResponse richResponse, ExpectedIntent expectedIntent)
         {
             if (expectedInputs == null)
@@ -45,13 +55,11 @@ namespace ActionsSDK
 
         public void AddSimpleResponse(SimpleResponse SimpleResponse)
         {
-            if (ActionsRequest.surface.HasAudio() || ActionsRequest.surface.HasScreen())
+            if (ActionsRequest.HasAudio() || ActionsRequest.HasScreen())
             {
                 //TODO: Pasar los que no cumple
                 throw new NotSupportedException();
             }
-
-
         }
 
     }

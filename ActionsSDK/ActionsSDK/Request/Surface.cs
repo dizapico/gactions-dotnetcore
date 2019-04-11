@@ -1,10 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace ActionsSDK
 {
     public class Surface
     {
-        public IList<Capability> capabilities { get; set; }
+        [JsonProperty]
+        private IList<Capability> capabilities { get; set; }
 
         public bool Has(string Capability)
         {
@@ -19,7 +21,7 @@ namespace ActionsSDK
         }
 
 
-        #region AuxCapabilitiesMethods
+        #region HasCapabilities
         public bool HasScreen()
         {
             return Has("actions.capability.SCREEN_OUTPUT");
