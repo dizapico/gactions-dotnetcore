@@ -29,6 +29,10 @@ namespace ActionsSDK
         {
             this.ActionsRequest = ActionsRequest;
             ExpectedInput = new ExpectedInput();
+            expectedInputs = new List<ExpectedInput>();
+            //Only one supported by Google Actions
+            expectedInputs.Add(new ExpectedInput());
+       
         }
 
         public bool IsRequestWelcome()
@@ -39,6 +43,11 @@ namespace ActionsSDK
         public bool IsSignIn()
         {
             return ActionsRequest.IsSignIn();
+        }
+
+        public string GetEmail()
+        {
+            return ActionsRequest.GetEmail();
         }
 
         public void AddHelper(RichResponse richResponse, ExpectedIntent expectedIntent)
@@ -57,8 +66,9 @@ namespace ActionsSDK
         {
             if (ActionsRequest.HasAudio() || ActionsRequest.HasScreen())
             {
-                //TODO: Pasar los que no cumple
-                throw new NotSupportedException();
+                expectUserResponse = true;
+
+                expectedInputs[0].inputPrompt.richInitialPrompt.AddSimpleResponse(SimpleResponse);
             }
         }
 

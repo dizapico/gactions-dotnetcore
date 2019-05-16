@@ -12,6 +12,8 @@ namespace ActionsSDK
         {
             possibleIntents = new List<ExpectedIntent>();
             possibleIntents.Add(new ExpectedIntent("actions.intent.TEXT"));
+
+            inputPrompt = new InputPrompt();
         }
 
         public ExpectedInput(InputPrompt InputPrompt, ExpectedIntent PossibleIntent)

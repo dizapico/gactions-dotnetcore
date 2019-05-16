@@ -14,5 +14,10 @@ namespace ActionsSDK
         {
             richInitialPrompt = richResponse;
         }
+
+        public InputPrompt()
+        {
+            richInitialPrompt = new RichResponse();
+        }
     }
 }

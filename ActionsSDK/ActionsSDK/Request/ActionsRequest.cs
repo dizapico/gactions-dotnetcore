@@ -38,6 +38,19 @@ namespace ActionsSDK
             return Account != null;
         }
 
+        public string GetEmail()
+        {
+            if(Account.email != null)
+            {
+                return Account.email;
+            }
+            else
+            {
+                return "";
+            }
+
+        }
+
         #region Capabilities
 
         public bool HasScreen()
