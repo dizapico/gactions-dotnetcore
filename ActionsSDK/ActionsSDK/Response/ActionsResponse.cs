@@ -31,7 +31,7 @@ namespace ActionsSDK
             ExpectedInput = new ExpectedInput();
             expectedInputs = new List<ExpectedInput>();
             //Only one supported by Google Actions
-            expectedInputs.Add(new ExpectedInput());
+            //expectedInputs.Add(new ExpectedInput());
        
         }
 
@@ -67,8 +67,13 @@ namespace ActionsSDK
             if (ActionsRequest.HasAudio() || ActionsRequest.HasScreen())
             {
                 expectUserResponse = true;
-
-                expectedInputs[0].inputPrompt.richInitialPrompt.AddSimpleResponse(SimpleResponse);
+                if (expectedInputs.Count > 0)
+                {
+                    expectedInputs = new List<ExpectedInput>();
+                }
+                var richResponse = new RichResponse();
+                richResponse.AddSimpleResponse(SimpleResponse);
+                expectedInputs.Add(new ExpectedInput(new InputPrompt(richResponse), new ExpectedIntent("actions.intent.TEXT")));
             }
         }
 
