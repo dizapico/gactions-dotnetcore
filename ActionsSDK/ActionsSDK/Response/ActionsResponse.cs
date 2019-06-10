@@ -22,16 +22,13 @@ namespace ActionsSDK
         [JsonIgnore]
         private ActionsRequest ActionsRequest { get; set; }
 
-        //TODO: Antes de serializar asignar ExpectedInput en la lista y comentar que por ahora Actions solo soporta un ExpectedInput
-
+        
 
         public ActionsResponse(ActionsRequest ActionsRequest)
         {
             this.ActionsRequest = ActionsRequest;
             ExpectedInput = new ExpectedInput();
             expectedInputs = new List<ExpectedInput>();
-            //Only one supported by Google Actions
-            //expectedInputs.Add(new ExpectedInput());
        
         }
 
@@ -50,7 +47,7 @@ namespace ActionsSDK
             return ActionsRequest.GetEmail();
         }
 
-        public void AddHelper(RichResponse richResponse, ExpectedIntent expectedIntent)
+        public void AddHelper(RichResponse RichResponse, ExpectedIntent ExpectedIntent)
         {
             if (expectedInputs == null)
             {
@@ -59,7 +56,7 @@ namespace ActionsSDK
             expectUserResponse = true;
 
 
-            expectedInputs.Add(new ExpectedInput(new InputPrompt(richResponse), expectedIntent));
+            expectedInputs.Add(new ExpectedInput(new InputPrompt(RichResponse), ExpectedIntent));
         }
 
         public void AddSimpleResponse(SimpleResponse SimpleResponse)
@@ -76,6 +73,36 @@ namespace ActionsSDK
                 expectedInputs.Add(new ExpectedInput(new InputPrompt(richResponse), new ExpectedIntent("actions.intent.TEXT")));
             }
         }
+        public string GetFirstSimpleResponse()
+        {
+            var responses = GetSimpleResponses();
+            if (responses.Count > 0)
+            {
+                return responses[0].displayText;
+            }
+            else
+            {
+                return String.Empty;
+            }
+        }
 
+
+        private List<SimpleResponse> GetSimpleResponses()
+        {
+            if(expectedInputs != null && expectedInputs[0] != null)
+            {
+                var expectedInput = expectedInputs[0];
+                if(expectedInput.inputPrompt != null)
+                {
+                    var imputPrompt = expectedInput.inputPrompt;
+                    if(imputPrompt.richInitialPrompt != null)
+                    {
+                        var richResponse = imputPrompt.richInitialPrompt;
+                        return richResponse.GetAllSimpleResponse();
+                    }
+                }
+            }
+            return new List<SimpleResponse>();
+        }
     }
 }

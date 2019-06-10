@@ -11,7 +11,7 @@ namespace ActionsSDK
     public class ActionsRequest 
     {
         public User user { get; set; }
-        public Device devide { get; set; }
+        public Device device { get; set; }
         [JsonProperty]
         private Surface surface { get; set; }
         public Conversation conversation { get; set; }

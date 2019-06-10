@@ -9,7 +9,7 @@ namespace ActionsSDK
         private string name { get; set; }
         //can be only one of the following
         [JsonProperty]
-        private SimpleResponse simpleResponse { get; set; }
+        public SimpleResponse simpleResponse { get;private set; }
         [JsonProperty]
         private BasicCard basicCard { get; set; }
         [JsonProperty]

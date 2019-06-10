@@ -51,6 +51,19 @@ namespace ActionsSDK
                 return true;
             }
         }
+
+        public List<SimpleResponse> GetAllSimpleResponse()
+        {
+            var simpleResponsesList = new List<SimpleResponse>();
+            foreach (Item item in items)
+            {
+                if(item.GetRichResponseType() == typeof(SimpleResponse))
+                {
+                    simpleResponsesList.Add(item.simpleResponse);
+                }
+            }
+            return simpleResponsesList;
+        }
     }
 
     public class LinkOutSuggestion
