@@ -4,6 +4,15 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <AssemblyVersion>1.0.7041.50</AssemblyVersion>
     <FileVersion>1.0.7041.50</FileVersion>
+    <PackageId>gactions-dotnetcore</PackageId>
+    <Version>0.0.1</Version>
+    <PackageProjectUrl>https://github.com/zapiko/gactions-dotnetcore</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/zapiko/gactions-dotnetcore</RepositoryUrl>
+    <Authors>Diego Zapico</Authors>
+    <Company />
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Description />
   </PropertyGroup>
 
   <ItemGroup>
