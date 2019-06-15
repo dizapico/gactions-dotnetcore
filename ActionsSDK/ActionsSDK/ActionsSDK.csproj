@@ -10,9 +10,10 @@
     <RepositoryUrl>https://github.com/zapiko/gactions-dotnetcore</RepositoryUrl>
     <Authors>Diego Zapico</Authors>
     <Company />
-    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Description />
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
 
   <ItemGroup>
